@@ -5,29 +5,45 @@
 
 
 
-    <form class="max-w-sm mx-auto mt-8">
+    <form class="max-w-sm mx-auto mt-8" (ngSubmit)="login()" [formGroup]="loginForm" #formDir="ngForm">
         <div class="">
             <label for="email"
                 class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Email</label>
             <input type="email" id="email"
                 class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
-                required />
+                required formControlName="email" />
+
+            @if (email.invalid && formDir.submitted) {
+
+            <p class="text-red-500 text-xs">Email é obrigatório</p>
+            }
         </div>
         <div class="">
             <label for="password"
                 class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">password</label>
             <input type="password" id="password"
                 class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
-                required />
+                required formControlName="password" />
+            @if (password.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Senha é obrigatório</p>
+            }
         </div>
 
         <div class="flex flex-col mb-5 mt-14">
             <button type="submit"
-            class="text-white bg-primary rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">Login</button>
-        <button type="submit" routerLink="/register"
-            class="text-white mt-4 bg-bg border border-white rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">Cadastrar</button>
+                class="text-white bg-primary rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">
+                @if(isLoading$ | async){
+                <div class="flex justify-center items-center">
+                    <img class="animation-rotating" src="./assets/icons/sync.png" alt="">
+                </div>
+                }@else{
+                <span>Login</span>
+                }
+            </button>
+            <button type="submit" routerLink="/register"
+                class="text-white mt-4 bg-bg border border-white rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">Cadastrar</button>
         </div>
-       
+
     </form>
 
 </div>
