@@ -1,1 +1,82 @@
-<p>register works!</p>
+<div class="container-content">
+    <div class="mt-28 flex items-center justify-center">
+        <img src="./assets/logo/fut-street.png" alt="">
+    </div>
+
+
+
+    <form class="max-w-sm mx-auto mt-8" (ngSubmit)="register()" [formGroup]="registerForm" #formDir="ngForm">
+
+        <div class="">
+            <label for="name"
+                class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Nome</label>
+            <input type="text" id="name"
+                class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
+                required formControlName="name" />
+
+            @if (name.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Nome é obrigatório</p>
+            }
+        </div>
+        <div class="">
+            <label for="apelido"
+                class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Apelido</label>
+            <input type="text" id="apelido"
+                class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
+                required formControlName="apelido" />
+            @if (apelido.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Apelido é obrigatório</p>
+            }
+        </div>
+        <div class="">
+            <label for="birthday"
+                class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Data
+                de Nascimento</label>
+            <input type="date" id="birthday"
+                class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
+                required formControlName="birthday" />
+            @if (birthday.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Data de Nascimento é obrigatório</p>
+            }
+        </div>
+        <div class="">
+            <label for="email"
+                class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Email</label>
+            <input type="text" id="email"
+                class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
+                required formControlName="email" />
+            @if (email.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Email é obrigatório</p>
+            }
+        </div>
+        <div class="">
+            <label for="password"
+                class="mb-2 text-sm font-medium text-white relative left-5 p-1 top-2.5 bg-bg rounded-lg font-default">Senha</label>
+            <input type="password" id="password"
+                class="bg-bg border h-12 border-gray-300 text-white text-sm rounded-lg focus:border-primary block w-full p-2.5"
+                required formControlName="password" />
+            @if (password.invalid && formDir.submitted) {
+            <p class="text-red-500 text-xs">Senha é obrigatório</p>
+            }
+        </div>
+
+
+        <div class="flex flex-col mb-5 mt-14">
+            <button type="submit"
+                class="text-white bg-primary rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">
+                @if (this.isRequesting == true) {
+                <div class="flex justify-center items-center">
+                    <img class="animation-rotating" src="./assets/icons/sync.png" alt="">
+                </div>
+                }@else {
+                <span>Registrar</span>
+                }
+            </button>
+            <button type="submit" routerLink="/"
+                class="text-white mt-4 bg-bg border border-white rounded-lg text-xl  w-full sm:w-auto px-5 py-2.5 text-center font-bold font-default">Login</button>
+
+        </div>
+
+    </form>
+
+</div>

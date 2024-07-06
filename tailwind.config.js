@@ -10,7 +10,8 @@ module.exports = {
         'bg': '#343640',
       },
       fontFamily: {
-        default: ['"Roboto"'],
+        'sans': ['Roboto'],
+        'roboto': ['Roboto', 'sans-serif'],
       }
     },
   },
