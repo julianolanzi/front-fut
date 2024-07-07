@@ -2,6 +2,8 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { authGlobalError } from "../actions/authentication/auth-global-error.actions";
 import { AuthRequest } from "../actions/authentication/auth/auth-request.actions";
 import { AuthSuccess } from "../actions/authentication/auth/auth-success.actions";
+import { RefreshTokenSuccess } from "../actions/authentication/refresh-token/refresh-token-success.actions";
+import { RefreshToken } from "../actions/authentication/refresh-token/refresh-token.actions";
 import { AuthState } from "../states/auth.state";
 
 
@@ -52,6 +54,20 @@ const _authReducer = createReducer(
     loading: false,
     isRequestLogin: true,
     animationEnabled: false,
+  })),
+
+  on(new RefreshToken().createAction(), (state, action) => ({
+    ...state,
+    token: action.payload,
+    user: { ...state.user, token: action.payload },
+    authError: undefined,
+
+  })),
+  on(new RefreshTokenSuccess().createAction(), (state, action) => ({
+    ...state,
+    token: action.payload.token,
+    user: { ...state.user, ...action.payload },
+    authError: undefined,
   })),
 
 );

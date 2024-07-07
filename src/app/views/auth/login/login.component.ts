@@ -42,7 +42,7 @@ export class LoginComponent {
     }
 
     this.userLogin = Object.assign({}, this.userLogin, this.loginForm.value);
-    console.log(this.userLogin);
+
     this.store.dispatch(new AuthRequest(this.userLogin));
   }
 }

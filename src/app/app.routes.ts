@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGaurd } from './guards/auth.guard';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { HomeComponent } from './layouts/home/home.component';
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
+        canActivate: [AuthGaurd],
         children: [
             {
                 path: '',

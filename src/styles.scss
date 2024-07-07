@@ -10,19 +10,39 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.container-all{
+.container-all {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-    
+
 }
 
-.container-content{
+.container-content {
     width: 100%;
     min-width: 350px;
     max-width: 500px;
     height: auto;
+}
+
+.container-home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 500px;
+    margin: auto;
+
+}
+
+.sidebar{
+    ul{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
 }
 
 .animation-rotating {
