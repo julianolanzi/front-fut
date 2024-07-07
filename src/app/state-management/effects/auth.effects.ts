@@ -13,6 +13,7 @@ import { AuthRequest } from "../actions/authentication/auth/auth-request.actions
 import { AuthSuccess } from "../actions/authentication/auth/auth-success.actions";
 import { RefreshTokenSuccess } from "../actions/authentication/refresh-token/refresh-token-success.actions";
 import { RefreshToken } from "../actions/authentication/refresh-token/refresh-token.actions";
+import { LoaderDisableAction } from "../actions/global/loader/lodar-disable.actions";
 
 
 @Injectable({
@@ -48,7 +49,7 @@ export class AuthEffect {
       switchMap((action: RefreshToken) => {
         return this.AuthService.refrashToken(action.payload).pipe(
           map((response) => {
-
+            this.store.dispatch(new LoaderDisableAction);
 
             return new RefreshTokenSuccess(response);
           }),

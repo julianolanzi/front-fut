@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { RefreshToken } from "../state-management/actions/authentication/refresh-token/refresh-token.actions";
+import { LoaderEnableAction } from "../state-management/actions/global/loader/lodar-enable.actions";
 import { GlobalState } from "../state-management/states/global.state";
 import { LocalStorageService } from './../services/utils/local-storage.service';
 
@@ -23,6 +24,7 @@ export class AuthGaurd implements CanActivate {
     if (this.LocalStorageService.isTokenValid()) {
 
       const token = this.LocalStorageService.getToken() as string;
+      this.store.dispatch(new LoaderEnableAction());
       this.store.dispatch(new RefreshToken(token));
 
 
