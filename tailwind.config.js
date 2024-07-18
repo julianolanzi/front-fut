@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         'primary': '#59D53B',
         'bg': '#343640',
+        'bg-parent': '#4A4D5E',
       },
       fontFamily: {
         'sans': ['Roboto'],

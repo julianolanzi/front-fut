@@ -37,15 +37,15 @@ export abstract class BaseService {
     };
   }
 
-  // protected ObterAuthHeaderJson() {
-  //   return {
+  protected ObterAuthHeaderJson() {
+    return {
 
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${this.user.token}`,
-  //     }),
-  //   };
-  // }
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      }),
+    };
+  }
   // protected ObterAuthHeaderUploadJson() {
   //   return {
   //     headers: new HttpHeaders({
